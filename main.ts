@@ -194,8 +194,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (ひよこ.isHittingTile(CollisionDirection.Bottom)) {
         ひよこ.vy += -100
-        ひよこ.startEffect(effects.confetti)
-        music.jumpUp.play()
         ひよこ.setImage(img`
             . . . . . . . . . . b 5 b . . . 
             . . . . . . . . . b 5 b . . . . 
@@ -214,6 +212,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             b b c c c d d d d 5 5 5 b b . . 
             . . . c c c c c c c c b b . . . 
             `)
+        ひよこ.startEffect(effects.confetti)
+        music.jumpUp.play()
     }
 })
 let coin: Sprite = null
