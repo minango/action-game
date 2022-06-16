@@ -193,7 +193,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (ひよこ.isHittingTile(CollisionDirection.Bottom)) {
-        ひよこ.vy += -100
+        ひよこ.vy += -150
         ひよこ.setImage(img`
             . . . . . . . . . . b 5 b . . . 
             . . . . . . . . . b 5 b . . . . 
@@ -218,6 +218,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let coin: Sprite = null
 let tki1: Sprite = null
+let 重力 = 0
 let ひよこ: Sprite = null
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -360,7 +361,9 @@ tiles.setCurrentTilemap(tilemap`レベル1`)
     . . c b d d d d d 5 5 5 b b . . 
     . . . c c c c c c c c b b . . . 
     `, SpriteKind.Player)
-ひよこ.ay += 300
+ひよこ.ay += 重力 * 30
+重力 = 9.81
+ひよこ.ay += 重力 * 30
 tiles.placeOnRandomTile(ひよこ, assets.tile`myTile4`)
 tiles.setWallAt(tiles.getTileLocation(0, 0), true)
 controller.moveSprite(ひよこ, 71, 0)
